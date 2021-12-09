@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "this" {
       "iam:DeleteVirtualMFADevice"
     ]
     resources = [
-      "arn:aws:iam::${var.account_id}:mfa/&{aws:username}",
+      "arn:aws:iam::${var.account_id}:mfa/$${aws:username}",
     ]
   }
 
@@ -32,8 +32,8 @@ data "aws_iam_policy_document" "this" {
       "iam:DeleteVirtualMFADevice",
     ]
     resources = [
-      "arn:aws:iam::${var.account_id}:mfa/&{aws:username}",
-      "arn:aws:iam::${var.account_id}:user/&{aws:username}",
+      "arn:aws:iam::${var.account_id}:mfa/$${aws:username}",
+      "arn:aws:iam::${var.account_id}:user/$${aws:username}",
     ]
     condition {
       test     = "Bool"
@@ -49,7 +49,7 @@ data "aws_iam_policy_document" "this" {
       "iam:ListGroupsForUser",
     ]
     resources = [
-      "arn:aws:iam::${var.account_id}:user/&{aws:username}",
+      "arn:aws:iam::${var.account_id}:user/$${aws:username}",
     ]
   }
 
@@ -82,7 +82,7 @@ data "aws_iam_policy_document" "this" {
     ]
     resources = [
       "arn:aws:iam::*:mfa/*",
-      "arn:aws:iam::*:user/&{aws:username}"
+      "arn:aws:iam::*:user/$${aws:username}"
     ]
 
   }
@@ -102,7 +102,7 @@ data "aws_iam_policy_document" "this" {
       "iam:GetLoginProfile",
     ]
     resources = [
-      "arn:aws:iam::${var.account_id}:user/&{aws:username}",
+      "arn:aws:iam::${var.account_id}:user/$${aws:username}",
     ]
   }
 
@@ -118,8 +118,8 @@ data "aws_iam_policy_document" "this" {
     ]
 
     resources = [
-      "arn:aws:iam::*:mfa/&{aws:username}",
-      "arn:aws:iam::*:user/&{aws:username}"
+      "arn:aws:iam::*:mfa/$${aws:username}",
+      "arn:aws:iam::*:user/$${aws:username}"
     ]
   }
 
@@ -132,7 +132,7 @@ data "aws_iam_policy_document" "this" {
       "iam:GetSSHPublicKey",
     ]
     resources = [
-      "arn:aws:iam::${var.account_id}:user/&{aws:username}",
+      "arn:aws:iam::${var.account_id}:user/$${aws:username}",
     ]
   }
 
@@ -143,8 +143,8 @@ data "aws_iam_policy_document" "this" {
       "iam:DeactivateMFADevice"
     ]
     resources = [
-      "arn:aws:iam::*:mfa/&{aws:username}",
-      "arn:aws:iam::*:user/&{aws:username}"
+      "arn:aws:iam::*:mfa/$${aws:username}",
+      "arn:aws:iam::*:user/$${aws:username}"
     ]
     condition {
       test     = "Bool"
@@ -188,7 +188,7 @@ data "aws_iam_policy_document" "this" {
         "iam:UpdateAccessKey",
       ]
       resources = [
-        "arn:aws:iam::${var.account_id}:user/&{aws:username}"
+        "arn:aws:iam::${var.account_id}:user/$${aws:username}"
       ]
       condition {
         test     = "BoolIfExists"
@@ -212,7 +212,7 @@ data "aws_iam_policy_document" "this" {
         "iam:UploadSigningCertificate",
       ]
       resources = [
-        "arn:aws:iam::${var.account_id}:user/&{aws:username}"
+        "arn:aws:iam::${var.account_id}:user/$${aws:username}"
       ]
       condition {
         test     = "BoolIfExists"
@@ -234,7 +234,7 @@ data "aws_iam_policy_document" "this" {
         "iam:UploadSSHPublicKey"
       ]
       resources = [
-        "arn:aws:iam::${var.account_id}:user/&{aws:username}"
+        "arn:aws:iam::${var.account_id}:user/$${aws:username}"
       ]
       condition {
         test     = "BoolIfExists"
@@ -258,7 +258,7 @@ data "aws_iam_policy_document" "this" {
         "iam:UpdateServiceSpecificCredential",
       ]
       resources = [
-        "arn:aws:iam::${var.account_id}:user/&{aws:username}"
+        "arn:aws:iam::${var.account_id}:user/$${aws:username}"
       ]
       condition {
         test     = "BoolIfExists"
